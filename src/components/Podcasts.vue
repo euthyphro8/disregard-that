@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<div class="section">Podcasts</div>
+	<div class="podcasts" id="podcasts">
+		<div class="title">Podcasts</div>
 		<div v-for="link in links" :key="link">
 			<iframe
 				v-bind:src="getEmbeddedLink(link)"
@@ -9,9 +9,6 @@
 				frameborder="0"
 				scrolling="no"
 			></iframe>
-			<!-- <p>
-				{{ link }}
-			</p> -->
 		</div>
 	</div>
 </template>
@@ -50,6 +47,15 @@
 </script>
 
 <style scoped>
-	.section {
+	.podcasts {
+		background-image: linear-gradient(to bottom, #99aab4, #e8eae9);
+		background-color: #1b5471;
+		color: #55899e;
+		padding: 50px;
+	}
+	.title {
+		padding: 50px;
+		font-size: 2em;
+		font-weight: 900;
 	}
 </style>
