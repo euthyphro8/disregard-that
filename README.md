@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="http://disregardthatpodcast.com/img/disregard-that-podcast-supercompressed.b516e5d8.jpg" width="128" height="128" />
+    <img src="http://disregardthatpodcast.com/img/disregard-that-podcast-supercompressed.b516e5d8.jpg" width="256" height="256" />
 <p align="center">
 
 # Disregard That Podcast
