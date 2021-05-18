@@ -1,17 +1,15 @@
 <template>
-	<div>
-		<div class="section">Podcasts</div>
+	<div class="podcasts" id="podcasts">
+		<div class="title">Podcasts</div>
 		<div v-for="link in links" :key="link">
-			<iframe
-				v-bind:src="getEmbeddedLink(link)"
-				height="200px"
-				width="800px"
-				frameborder="0"
-				scrolling="no"
-			></iframe>
-			<!-- <p>
-				{{ link }}
-			</p> -->
+			<div class="container">
+				<iframe
+					class="responsive-iframe"
+					v-bind:src="getEmbeddedLink(link)"
+					frameborder="0"
+					scrolling="no"
+				></iframe>
+			</div>
 		</div>
 	</div>
 </template>
@@ -50,6 +48,40 @@
 </script>
 
 <style scoped>
-	.section {
+	.podcasts {
+		/* background-image: linear-gradient(to bottom, #99aab4, #e8eae9); */
+		/* background-color: #1b5471; */
+		background-color: #1e1f25;
+		color: #e8eae9;
+		/* padding-top: 100px; */
+	}
+	.title {
+		padding: 50px;
+		font-size: 2em;
+		font-weight: 900;
+	}
+	.container {
+		position: relative;
+		overflow: hidden;
+		width: 80vw;
+		height: 150px;
+		padding: 10px;
+		margin: auto;
+		max-width: 1000px;
+	}
+	@media (max-width: 935px) {
+		.container {
+			height: 100px;
+		}
+	}
+
+	.responsive-iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
 	}
 </style>
