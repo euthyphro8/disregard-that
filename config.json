@@ -1,0 +1,7 @@
+{
+	"cognito": {
+		"userPoolId": "us-west-2_Pni4CdDDc",
+		"clientId": "6pl3hvc15saj8ffcui07v7irnl",
+		"region": "us-west-2"
+	}
+}
