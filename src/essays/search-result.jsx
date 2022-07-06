@@ -17,11 +17,15 @@ function getTypeColor(type) {
 	}
 }
 
-export default function SearchResult({ post }) {
+export default function SearchResult({ post, onClick }) {
 	const { type, id, title, description, date, likes } = post;
 	const typeColor = getTypeColor(type);
 	return (
-		<Box sx={{ m: 1 }}>
+		<Box
+			// className={{ '&:hover': { background: '#f00' } }}
+			sx={{ m: 1 }}
+			onClick={onClick}
+		>
 			<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
 					<Typography

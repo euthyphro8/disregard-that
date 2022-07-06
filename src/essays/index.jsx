@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 import SearchResult from './search-result';
+import Essay from './essay';
 
 const posts = [
 	{
@@ -23,30 +24,45 @@ const posts = [
 ];
 
 export default function EssayPage() {
+	const [selected, setSelected] = React.useState(null);
 	return (
 		<Box sx={{ my: 4 }}>
-			<Typography variant='h4' sx={{ fontWeight: 900 }}>
-				ESSAYS
-			</Typography>
-			<Typography variant='h6' sx={{ fontWeight: 700 }} gutterBottom>
-				In total, there are{' '}
-				<Box sx={{ bgcolor: 'warning.main', display: 'inline', px: 1 }}>
-					{posts.length}
-				</Box>{' '}
-				posts.
-			</Typography>
-			<TextField
-				id='outlined-basic'
-				fullWidth
-				label='Search'
-				variant='outlined'
-				sx={{ mb: 2 }}
-			/>
-			<Box>
-				{posts.map((p) => (
-					<SearchResult post={p} />
-				))}
-			</Box>
+			{selected ? (
+				<Essay
+					name={selected.title}
+					content={selected.description}
+					date={selected.date}
+				/>
+			) : (
+				<>
+					<Typography variant='h4' sx={{ fontWeight: 900 }}>
+						ESSAYS
+					</Typography>
+					<Typography variant='h6' sx={{ fontWeight: 700 }} gutterBottom>
+						In total, there are{' '}
+						<Box sx={{ bgcolor: 'warning.main', display: 'inline', px: 1 }}>
+							{posts.length}
+						</Box>{' '}
+						posts.
+					</Typography>
+					<TextField
+						id='outlined-basic'
+						fullWidth
+						label='Search'
+						variant='outlined'
+						sx={{ mb: 2 }}
+					/>
+					<Box>
+						{posts.map((p) => (
+							<SearchResult
+								key={p.id}
+								post={p}
+								onClick={() => setSelected(p)}
+							/>
+						))}
+					</Box>
+				</>
+			)}
 		</Box>
 	);
 }
