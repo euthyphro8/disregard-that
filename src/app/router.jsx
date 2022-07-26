@@ -10,7 +10,7 @@ export default function Router() {
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<HomePage />} />
-				<Route path='essays' element={<EssaysPage />} />
+				<Route path='essays/*' element={<EssaysPage />} />
 				<Route path='podcasts' element={<PodcastsPage />} />
 				<Route path='*' element={<NotFoundPage />} />
 			</Routes>

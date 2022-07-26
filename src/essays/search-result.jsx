@@ -22,8 +22,14 @@ export default function SearchResult({ post, onClick }) {
 	const typeColor = getTypeColor(type);
 	return (
 		<Box
-			// className={{ '&:hover': { background: '#f00' } }}
-			sx={{ m: 1 }}
+			id='result-container'
+			sx={{
+				m: 1,
+				p: 1,
+				borderRadius: 1,
+				cursor: 'default',
+				'&:hover': { background: '#6a0' },
+			}}
 			onClick={onClick}
 		>
 			<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
