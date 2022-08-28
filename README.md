@@ -1,13 +1,3 @@
-<p align="center">
-    <img src="http://disregardthatpodcast.com/img/disregard-that-podcast-supercompressed.b516e5d8.jpg" width="256" height="256" />
-<p align="center">
-
-# ~~Disregard That Podcast~~
-
-~~Home of the Disregard That podcast featuring a brief introduction to the co-hosts and all relevant links to the podcast.~~
-
-~~The project itself is developed with [Vue](https://vuejs.org/) and hosted with [Google App Engine](https://cloud.google.com/appengine).~~
-
 # Todo
 
 This repo is undergoing a complete makeover to pivot in the direction of essay writing as the main form of content.
@@ -17,9 +7,9 @@ the primary tasks that need to be worked on before the site will be able to repl
 current) site. This list itself is a WIP.
 
 - [x] Convert the project to react.
-- [ ] Be able to render an essay from a 'post' object.
+- [x] Be able to render an essay from a 'post' object.
   - [x] Render the basic essay metadata and content.
-  - [ ] Render a sidebar with links to headings.
+  - [x] Render a sidebar with links to headings.
 - [ ] Create a moderately robust post editor that supports markdown or something else equally simple.
   - [ ] Post editor can edit the main content
   - [ ] Post editor can edit the meta data.
