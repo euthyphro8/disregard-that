@@ -2,14 +2,18 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { useParams } from 'react-router-dom';
+import Tooltip from '@mui/material/Tooltip';
+import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import rehypeSlug from 'rehype-slug';
 
 import posts from './posts';
 
 export default function EssayViewer() {
+	const navigate = useNavigate();
 	const { id } = useParams();
 	const { meta, author, title, content, sections } = posts.find((p) => p.id === id) || {};
 	const [section, setSection] = React.useState(null);
@@ -23,21 +27,18 @@ export default function EssayViewer() {
 			if (elY < window.innerHeight / 2) focused = el;
 		}
 		setSection(focused.innerText);
-	}, [sections, setSection]);
+	}, []);
 
 	// Component mount/unmount to add/remove scroll event listener
 	React.useEffect(() => {
 		if (!sections.length) return;
 		let throttle = 0;
-		window.addEventListener(
-			'scroll',
-			() => {
-				if (!throttle) onScroll();
-				throttle = (throttle + 1) % 10;
-			},
-			true
-		);
-		return () => window.removeEventListener('scroll', onScroll);
+		const handler = () => {
+			if (!throttle) onScroll();
+			throttle = (throttle + 1) % 10;
+		};
+		window.addEventListener('scroll', handler);
+		return () => window.removeEventListener('scroll', handler);
 	});
 
 	return (
@@ -63,7 +64,6 @@ export default function EssayViewer() {
 								p: 1,
 								cursor: 'default',
 								borderTopColor: 'text.secondary',
-								'&:hover': { background: '#ddd2' },
 							}}
 							fontSize='0.8em'
 							fontWeight={600}
@@ -95,9 +95,23 @@ export default function EssayViewer() {
 				</Grid>
 			)}
 			<Grid item xs={sections.length ? 10 : 12} padding={1}>
-				<Typography fontSize='2.4rem' fontWeight={900}>
-					{title}
-				</Typography>
+				<Box sx={{ display: 'flex', flexBasis: 'row', justifyContent: 'space-between' }}>
+					<Typography fontSize='2.4rem' fontWeight={900}>
+						{title}
+					</Typography>
+
+					<Tooltip title='Edit'>
+						<IconButton
+							color='primary'
+							sx={{ my: 1 }}
+							onClick={() => {
+								navigate(`./editor`);
+							}}
+						>
+							<EditIcon />
+						</IconButton>
+					</Tooltip>
+				</Box>
 				<Box fontSize='1.1em' sx={{ mt: 1, display: 'flex', flexBasis: 'row' }}>
 					<Box sx={{ mr: 2 }}>
 						by <b>{author}</b>

@@ -11,10 +11,10 @@ current) site. This list itself is a WIP.
   - [x] Render the basic essay metadata and content.
   - [x] Render a sidebar with links to headings.
 - [ ] Create a moderately robust post editor that supports markdown or something else equally simple.
-  - [ ] Post editor can edit the main content
+  - [x] Post editor can edit the main content (nothing is actually savable until the backend setup)
   - [ ] Post editor can edit the meta data.
 - [ ] Create a search page for the essays.
-  - [ ] Render search listings.
+  - [x] Render search listings.
   - [ ] Be able to search based on title, tags, or author.
 - [ ] Recreate the podcast listing from the previous site.
 - [ ] Create a mobile friendly nav bar and revamp site navigation itself.
