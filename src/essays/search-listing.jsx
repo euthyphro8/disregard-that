@@ -1,4 +1,5 @@
 import React from 'react';
+import { gql, useQuery } from '@apollo/client';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -6,10 +7,38 @@ import TextField from '@mui/material/TextField';
 import SearchResult from './search-result';
 import { useNavigate } from 'react-router-dom';
 
-import posts from './posts';
+const GET_POSTS = gql`
+	query GetPosts {
+		posts {
+			id
+			created
+			updated
+			version
+			tags
+			stats {
+				likes
+				dislikes
+				loves
+				hates
+			}
+			words
+			title
+			blurb
+			content
+			sections
+			user {
+				id
+				email
+				name
+			}
+		}
+	}
+`;
 
 export default function SearchListing() {
 	const navigate = useNavigate();
+	const { data } = useQuery(GET_POSTS);
+	const posts = data?.posts || [];
 	return (
 		<Box
 			sx={{
